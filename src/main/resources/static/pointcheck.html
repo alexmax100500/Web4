@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Лаба4</title>
+    <!-- версия для разработки, включает отображение полезных предупреждений в консоли -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+<table id="mainTable" class="shaded">
+    <thead>
+    <tr><td colspan="7"><h3>Валидация введённых значений:</h3></td></tr>
+    </thead>
+    <tbody>
+        <tr><td colspan="7"><hr/></td></tr>
+        <tr>
+            <td>Выберите X:</td>
+            <td id = 'X-pack' colspan="5">
+                <div id="V">
+                    <input type="radio" value="-3" v-model="user">
+                    <label>-3</label>
+                    <input type="radio" value="-2" v-model="user">
+                    <label>-2</label>
+                    <input type="radio" value="-1" v-model="user">
+                    <label>-1</label>
+                    <br>
+                    <input type="radio" value="0" v-model="user">
+                    <label>0</label>
+                    <input type="radio" value="1" v-model="user">
+                    <label>1</label>
+                    <input type="radio" value="2" v-model="user">
+                    <label>2</label>
+                    <br>
+                    <input type="radio" value="3" v-model="user">
+                    <label>3</label>
+                    <input type="radio" value="4" v-model="user">
+                    <label>4</label>
+                    <input type="radio" value="5" v-model="user">
+                    <label>5</label>
+                    <br>
+                    <span>Выбрано: {{ user }}</span>
+                </div>
+<!--                <script src="https://unpkg.com/vue"></script>-->
+                <script>
+                    var V = new Vue({
+                        el: '#V',
+                        data: {
+                            user:''
+                        }
+                    });
+                </script>
+<!--                <div id="X">-->
+<!--                <input type="radio" value="-3" v-model="user">-->
+<!--                    <label>-3</label>-->
+<!--                <input type="radio" value="-2" v-model="user">-->
+<!--                    <label>-2</label>-->
+<!--                <input type="radio" value="-1" v-model="user">-->
+<!--                    <label>-1</label>-->
+<!--                <br>-->
+<!--                <input type="radio" value="0" v-model="user">-->
+<!--                    <label>0</label>-->
+<!--                <input type="radio" value="1" v-model="user">-->
+<!--                    <label>1</label>-->
+<!--                <input type="radio" value="2" v-model="user">-->
+<!--                    <label>2</label>-->
+<!--                <br>-->
+<!--                <input type="radio" value="3" v-model="user">-->
+<!--                    <label>3</label>-->
+<!--                <input type="radio" value="4" v-model="user">-->
+<!--                    <label>4</label>-->
+<!--                <input type="radio" value="5" v-model="user">-->
+<!--                    <label>5</label>-->
+<!--                </div>-->
+<!--                <span>Выбрано: {{ user }}</span>-->
+<!--                <script>var X = new Vue({-->
+<!--                    el: '#X',-->
+<!--                    data: {-->
+<!--                        user:''-->
+<!--                    }-->
+<!--                });</script>-->
+            </td>
+            <td rowspan="2">
+                <svg width="300" height="300" id="graph" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="0" y1="150" x2="300" y2="150" stroke="#000720"/>
+                    <line x1="150" y1="0" x2="150" y2="300" stroke="#000720"/>
+                    <polygon points="300,150 295,155 295, 145" fill="#000720" stroke="#000720"/>
+                    <polygon points="150,0 145,5 155,5" fill="#000720" stroke="#000720"/>
+                    <rect id="rect" x="30" y="150" width="120" height="60" fill-opacity="0.4" stroke="navy" fill="blue"/>
+                    <polygon id="triangle" points="150,150 150,90 90,150" fill-opacity="0.4" stroke="navy" fill="blue"/>
+                    <path id="path" d="M 150 150 L 270 150 C 270 210 210 270 150 270 Z" fill-opacity="0.4" stroke="navy" fill="blue"/>
+                </svg>
+            </td>
+        </tr>
+        <tr>
+            <td>Введите Y:</td>
+            <td colspan="5"><input id="Y-input" class="illuminated animated" type="text"  maxlength="6"/></td>
+        </tr>
+        <tr>
+            <td>Выберите R:</td>
+            <td>
+                <div id="R">
+                    <input type="radio" value="-3" v-model="user2" onclick="refrR">
+                    <label>-3</label>
+                    <input type="radio" value="-2" v-model="user2" onclick="refrR">
+                    <label>-2</label>
+                    <input type="radio" value="-1" v-model="user2" onclick="refrR">
+                    <label>-1</label>
+                    <br>
+                    <input type="radio" value="0" v-model="user2" onclick="refrR">
+                    <label>0</label>
+                    <input type="radio" value="1" v-model="user2" onclick="refrR">
+                    <label>1</label>
+                    <input type="radio" value="2" v-model="user2" onclick="refrR">
+                    <label>2</label>
+                    <br>
+                    <input type="radio" value="3" v-model="user2" onclick="refrR">
+                    <label>3</label>
+                    <input type="radio" value="4" v-model="user2" onclick="refrR">
+                    <label>4</label>
+                    <input type="radio" value="5" v-model="user2" onclick="refrR">
+                    <label>5</label>
+                    <br>
+                    <span>Выбрано: {{ user2 }}</span>
+                </div>
+<!--                <script src="https://unpkg.com/vue"></script>-->
+                <script>
+                    var R = new Vue({
+                        el: '#R',
+                        data: {
+                            user2:''
+                        }
+                    });
+                </script>
+            </td>
+            <td><a value="Вернуться на домашную страницу" outcome="index.html"/></td>
+        </tr>
+        <tr>
+            <td colspan="7">
+                <div>
+                    <input type="button" value="Отправить" onclick="save()"/>
+                </div>
+                <hr/>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+<!--    <tr id="outputContainer"><td colspan="7"><h4><span class="outputStub notification">Результаты отсутствуют</span></h4></td></tr>-->
+    <tr>
+        <td colspan="7">
+            <table id="resTable">
+                <tr id="res"></tr>
+            </table>
+        </td>
+    </tr>
+    </tfoot>
+</table>
+<div id="app">
+
+    <!--    <form class="vue-form" @submit="submit">-->
+    <!--            <legend>Vue Contact Form</legend>-->
+    <!--            <div>-->
+    <!--                <label class="label" for="name">Name</label>-->
+    <!--                <input type="text" name="name" id="name" required="" v-model="name">-->
+    <!--            </div>-->
+    <!--            <div>-->
+    <!--                <label class="label" for="password">Password</label>-->
+    <!--                <input type="text" name="password" id="password" required="" v-model="password">-->
+    <!--            </div>-->
+    <!--            <div>-->
+    <!--                <input type="submit" value="Send Form">-->
+    <!--            </div>-->
+    <!--    </form>-->
+
+    <!--    <div class="debug">-->
+    <!--        <pre><code>{{ $data }}</code></pre>-->
+    <!--    </div>-->
+
+</div>
+<script src="js/point.js"></script>
+<script>
+    "use strict";
+    //var messageApi = Vue.resource('/point');
+    let x, y, r;
+
+    const svg = document.getElementById("graph");
+    const rect = document.getElementById("rect");
+    const triangle = document.getElementById("triangle");
+    const path = document.getElementById("path");
+
+    document.addEventListener("DOMContentLoaded", () => {
+        svg.addEventListener("click", event => {
+            r = R.user2;
+            if (validateR()) {
+                let position = getMousePosition(svg, event);
+                x = ((position.x - 150) / 125 * r).toFixed(6);
+                y = ((150 - position.y) / 125 * r).toFixed(6);
+                messageApi.get({x: x, y: y, r: r});
+                redrawGraph();
+            }
+        });
+    });
+
+    function refrR(){
+        r = R.user2;
+        redrawGraph();
+    }
+
+    function save(){
+        y = document.querySelector("#Y-input").value.replace(",", ".");
+        x = V.user;
+        r = R.user2;
+        if (validateR()) {
+            messageApi.get({x: x, y: y, r: r});
+            redrawGraph();
+        }
+    }
+
+    function validateR() {
+        if (isNumeric(r)) return true;
+        else {
+            return false;
+        }
+    }
+
+    function isNumeric(n) {
+        return !isNaN(parseFloat(n)) && isFinite(n);
+    }
+
+    function getMousePosition(svg, event) {
+        let rect = svg.getBoundingClientRect();
+        return {
+            x: event.clientX - rect.left,
+            y: event.clientY - rect.top
+        };
+    }
+
+    function redrawGraph() {
+        //let outputContainer = document.getElementById("outputContainer");
+        //if (outputContainer !== null) outputContainer.parentNode.removeChild(outputContainer);
+        rect.setAttribute("width", `${5 * 24}`);
+        rect.setAttribute("height", `${5 * 12}`);
+        rect.setAttribute("x", `${150 - 5 * 24}`);
+        rect.setAttribute("y", `${150 + 5 * 0}`);
+        triangle.setAttribute("points", `150,150 150,${150 - 12 * 5} ${150 - 12 * 5},150`);
+        let k = 0;
+        path.setAttribute("d", `M 150 150 L ${150 + 5 * 24} 150 C ${150 + 5 * 24} ${210 - k} ${210 - k} ${150 + 5 * 24} 150 ${150 + 5 * 24} Z`);
+        setTimeout(loadDots, 400); //нужно дождаться получения dom с обновлённой таблицей, иначе новая точка не появляется на графике - МЕГАКОСТЫЛЬ
+    }
+
+    function loadDots() {
+        let oldDots = document.querySelectorAll("circle");
+        oldDots.forEach(dot => dot.parentNode.removeChild(dot));
+        let table = app.messages;
+        for (let i = 0; i < table.length; i++) {
+            let cells = table[i];
+            let dotCoords = {
+                x: parseFloat(cells.x) / r * 125 + 150,
+                y: 150 - parseFloat(cells.y) / r * 125
+            };
+            let dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+            dot.setAttribute("r", "5");
+            dot.setAttribute("cx", `${dotCoords.x}`);
+            dot.setAttribute("cy", `${dotCoords.y}`);
+            if(cells.isCoordsStatus){
+                dot.setAttribute("fill", "green");
+            }else{
+                dot.setAttribute("fill", "red");
+            }
+            //dot.setAttribute("fill", cells.isCoordsStatus === "true" ? "green" : "red");
+            console.log(cells.isCoordsStatus);
+            svg.appendChild(dot);
+        }
+    }
+</script>
+</body>
+</html>
