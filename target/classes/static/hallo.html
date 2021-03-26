@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Лаба4</title>
+    <!-- версия для разработки, включает отображение полезных предупреждений в консоли -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+<div id="app">
+
+    <form class="vue-form" @submit="submit">
+        <legend>Vue Contact Form</legend>
+        <div>
+            <label class="label" for="name">Name</label>
+            <input type="text" name="name" id="name" required="" v-model="name">
+        </div>
+        <div>
+            <label class="label" for="password">Password</label>
+            <input type="text" name="password" id="password" required="" v-model="password">
+        </div>
+        <div>
+            <input type="submit" value="Send Form">
+        </div>
+    </form>
+
+    <div class="debug">
+        <pre><code>{{ $data }}</code></pre>
+    </div>
+
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>
